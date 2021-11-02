@@ -5,11 +5,11 @@ from datetime import *
 from function import *
 
 
-page = 1 # initializing the first page for scraping
+page = 14 # initializing the first page for scraping
  # Below is the link to all first page of the mobile adverts.
 mobile = "https://tonaton.com/en/ads/ghana/mobile-phones?sort=date&order=desc&buy_now=0&urgent=0&page="
 
-while page < 151:
+while page < 250:
     
     # The mobile search page
     first_page = get_page_link(mobile, page)
@@ -28,11 +28,13 @@ while page < 151:
         for link in links.find_all("a"):
             if link['href'] != '/en/promotions':
                 page_list.append(link['href'])
-    ad_list=[]
+    #ad_list=[]
     for ads in page_list:
         advert = listing_page_link(ads)
-        ad_list.append(advert)
+        #ad_list.append(advert)
         ad_soup = get_soup(advert)
+        if len(ad_soup.findAll('img')) == 0:
+            continue
         text = ad_soup.find("div", class_="title-container--1PPnS").text.split('Posted on ')
         name = text[0]
         price = int(''.join(ad_soup.find("div", class_="amount--3NTpl").text.split()[1].split(',')))
@@ -46,7 +48,7 @@ while page < 151:
         dat = text[1].split(',')[0][:6] + ', 2021'
         dt = parse(dat)
         dates = dt.strftime('%Y-%m-%d')
-        url = advert
+        link = advert
         vendor = 'Tonaton'
         print(name)
         print(price)
@@ -56,21 +58,34 @@ while page < 151:
         print(image)
         print(times)
         print(dates)
-        print(url)
+        print(link)
         print(' ')
         print(' ')
 
+
+        vendor = 'Tonaton'
 
         connection, cur = create_connection()
         with connection:
+            query = "SELECT id FROM search_region where region='{}'".format(region)
+            cur.execute(query)
+            if len(cur.fetchall()) == 0:
+                continue
             region_id = get_region_id(region, cur)
             condition_id = get_condition_id(condition, cur)
             vendor_id = get_vendor_id(vendor, cur)
-            insert_data(name, price, location, image, link, times, dates, condition_id, region_id, vendor_id, cur)
-
-        print(" Data has been successfully inserted ")
-
+            if link_url(link, cur) == None:
+                insert_data(name, price, location, image, link, times, dates, condition_id, region_id, vendor_id, cur)
+                print( "{} has been inserted into the database ".format(name))
+                print("  ")
+            else:
+                print('Item Already exists')
     
+
+
+    print(" ")
     print('Page ' + str(page) + ' completed')
-    
+    print(" ")
+    print(" ")
+    print(" ")
     page = page + 1

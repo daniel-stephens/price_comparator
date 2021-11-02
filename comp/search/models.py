@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 
@@ -25,13 +26,13 @@ class Vendor(models.Model):
 
 
 class Phone(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.TextField(max_length=200)
     price = models.IntegerField()
     condition = models.ForeignKey(Condition, on_delete=models.DO_NOTHING)
     location = models.CharField(max_length=200)
     region = models.ForeignKey(Region, on_delete=models.DO_NOTHING)
-    image = models.CharField(max_length=500)
-    link = models.CharField(max_length=500)
+    image = models.CharField(max_length=200)
+    link = models.CharField(max_length=200, primary_key=True)
     vendor= models.ForeignKey(Vendor, on_delete=models.DO_NOTHING)
     time = models.TimeField()
     date = models.DateField()

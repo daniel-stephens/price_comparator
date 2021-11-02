@@ -73,3 +73,9 @@ def insert_data(name, price, location,image, link, time, date, condition_id, reg
     print('Data Inserted')
     return
 
+# this function checks to see if 
+def link_url (link, cur):
+    query = "SELECT link FROM search_phone where link ='{}'".format(link)
+    cur.execute(query)
+    key = cur.fetchone()
+    return key
