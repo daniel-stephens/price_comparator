@@ -5,7 +5,7 @@ from datetime import *
 from function import *
 
 
-page = 14 # initializing the first page for scraping
+page =1 # initializing the first page for scraping
  # Below is the link to all first page of the mobile adverts.
 mobile = "https://tonaton.com/en/ads/ghana/mobile-phones?sort=date&order=desc&buy_now=0&urgent=0&page="
 
@@ -35,13 +35,15 @@ while page < 250:
         ad_soup = get_soup(advert)
         if len(ad_soup.findAll('img')) == 0:
             continue
+        elif len(ad_soup.findAll('img')[0].attrs.keys()) <2:
+            continue
         text = ad_soup.find("div", class_="title-container--1PPnS").text.split('Posted on ')
         name = text[0]
         price = int(''.join(ad_soup.find("div", class_="amount--3NTpl").text.split()[1].split(',')))
         condition = ad_soup.find("div", class_="word-break--2nyVq value--1lKHt").text
         location = text[1].split(',')[1].strip()
         region = text[1].split(',')[2].strip()
-        image = ad_soup.findAll('img')[2].attrs['src'][:-19] + '600/600/fitted.jpg'
+        image = ad_soup.findAll('img')[0].attrs['src'][:-19] + '600/600/fitted.jpg'
         tim = text[1].split(',')[0][7:]
         dt= datetime.strptime(tim, '%I:%M %p')
         times = dt.time()
