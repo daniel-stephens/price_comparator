@@ -5,7 +5,7 @@ from datetime import *
 from function import *
 
 
-page =1 # initializing the first page for scraping
+page =133 # initializing the first page for scraping
  # Below is the link to all first page of the mobile adverts.
 mobile = "https://tonaton.com/en/ads/ghana/mobile-phones?sort=date&order=desc&buy_now=0&urgent=0&page="
 

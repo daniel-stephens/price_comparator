@@ -79,3 +79,8 @@ def link_url (link, cur):
     cur.execute(query)
     key = cur.fetchone()
     return key
+
+# This function gets the url for the jiji site
+def url_maker(url_base, number):
+    url = url_base + str(number)
+    return url
