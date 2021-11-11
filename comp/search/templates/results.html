@@ -1,204 +1,106 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="index.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <title>Document</title>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <a href="index.html" class="logo">
-          <div class="logo__symbol"></div>
-          <div class="logo__Text">Price Comparator</div>
-        </a>
-        <div class="nav__links">
-          <a href="index.html">Home</a>
-          <a href="#">Dashboard</a>
-        </div>
-      </nav>
-    </header>
-    <main class="results__main">
-      <aside>
-        <h2>Filters</h2>
-        <div class="filter__group">
-          <h3 class="filter__type">Condition</h3>
-          <div class="filter">
-            <input type="radio" id="new" name="condition" />
-            <label for="new">New</label>
-          </div>
-          <div class="filter">
-            <input type="radio" id="used" name="condition" />
-            <label for="used">Used</label>
-          </div>
-        </div>
+{% extends 'base.html'%}
 
-        <div class="filter__group">
-          <h3 class="filter__type">Region</h3>
-          <div class="filter">
-            <input type="radio" id="greater_accra" name="region" />
-            <label for="greater_accra">Greater Accra</label>
-          </div>
-          <div class="filter">
-            <input type="radio" id="ashanti" name="region" />
-            <label for="ashanti">Ashanti</label>
-          </div>
-          <div class="filter">
-            <input type="radio" id="central" name="region" />
-            <label for="central">Central</label>
-          </div>
-          <div class="filter">
-            <input type="radio" id="eastern" name="region" />
-            <label for="eastern">Eastern</label>
-          </div>
-          <div class="filter">
-            <input type="radio" id="western" name="region" />
-            <label for="western">Western</label>
-          </div>
-        </div>
-      </aside>
-      <section class="feed">
-        <!-- lowest prices -->
-        <section class="price__category lowest__prices">
-          <h2>Lowest prices within one week</h2>
-          <div class="items__wrapper">
-            <a href="#" class="item">
-              <div class="item__image"></div>
-              <div class="item__details">
-                <p>Iphone 12</p>
-                <p>ghc 5,500</p>
-                <p>Achimota, Greater Accra</p>
-                <p>Jiji</p>
-                <p class="new">New</p>
-              </div>
-            </a>
-            <a href="#" class="item">
-              <div class="item__image"></div>
-              <div class="item__details">
-                <p>Iphone 12</p>
-                <p>ghc 5,500</p>
-                <p>Achimota, Greater Accra</p>
-                <p>Jiji</p>
-                <p class="new">New</p>
-              </div>
-            </a>
-          </div>
-        </section>
-        <!-- Other prices -->
-        <section class="price__category other__prices">
-          <h2>Other Prices</h2>
-          <div class="items__wrapper">
-            <!-- item 1 -->
-            <a href="#" class="item">
-              <div class="item__image"></div>
-              <div class="item__details">
-                <p>Iphone 12</p>
-                <p>ghc 5,500</p>
-                <p>Achimota, Greater Accra</p>
-                <p>Jiji</p>
-                <p class="new">New</p>
-              </div>
-            </a>
-            <!-- item 2 -->
-            <a href="#" class="item">
-              <div class="item__image"></div>
-              <div class="item__details">
-                <p>Iphone 12</p>
-                <p>ghc 5,500</p>
-                <p>Achimota, Greater Accra</p>
-                <p>Jiji</p>
-                <p class="new">New</p>
-              </div>
-            </a>
-            <!-- item 3 -->
-            <a href="#" class="item">
-              <div class="item__image"></div>
-              <div class="item__details">
-                <p>Iphone 12</p>
-                <p>ghc 5,500</p>
-                <p>Achimota, Greater Accra</p>
-                <p>Jiji</p>
-                <p class="new">New</p>
-              </div>
-            </a>
-            <!-- item 4 -->
-            <a href="#" class="item">
-              <div class="item__image"></div>
-              <div class="item__details">
-                <p>Iphone 12</p>
-                <p>ghc 5,500</p>
-                <p>Achimota, Greater Accra</p>
-                <p>Jiji</p>
-                <p class="new">New</p>
-              </div>
-            </a>
-            <!-- item 5 -->
-            <a href="#" class="item">
-              <div class="item__image"></div>
-              <div class="item__details">
-                <p>Iphone 12</p>
-                <p>ghc 5,500</p>
-                <p>Achimota, Greater Accra</p>
-                <p>Jiji</p>
-                <p class="new">New</p>
-              </div>
-            </a>
-            <!-- item 6 -->
-            <a href="#" class="item">
-              <div class="item__image"></div>
-              <div class="item__details">
-                <p>Iphone 12</p>
-                <p>ghc 5,500</p>
-                <p>Achimota, Greater Accra</p>
-                <p>Jiji</p>
-                <p class="new">New</p>
-              </div>
-            </a>
-            <!-- item 7 -->
-            <a href="#" class="item">
-              <div class="item__image"></div>
-              <div class="item__details">
-                <p>Iphone 12</p>
-                <p>ghc 5,500</p>
-                <p>Achimota, Greater Accra</p>
-                <p>Jiji</p>
-                <p class="new">New</p>
-              </div>
-            </a>
-            <!-- item 8 -->
-            <a href="#" class="item">
-              <div class="item__image"></div>
-              <div class="item__details">
-                <p>Iphone 12</p>
-                <p>ghc 5,500</p>
-                <p>Achimota, Greater Accra</p>
-                <p>Jiji</p>
-                <p class="new">New</p>
-              </div>
-            </a>
-          </div>
-        </section>
-      </section>
-    </main>
-    <footer>
-      <div class="wrapper">
-        <div>
-          <h4>Contact</h4>
-          <p>054 693 0740</p>
-          <a href="mailto: danystevo@gmail.com">danysteve@gmail.com</a>
-        </div>
-        <div>
-          <h4>Location</h4>
-          <p>Street name</p>
-          <p>Obuasi</p>
-        </div>
+{%block content%}
+  <title>Welcome to Phone Price Comparator</title>
+
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="{% url 'home' %}" class="logo">
+        <div class="logo__symbol"></div>
+        <div class="logo__Text">Price Comparator</div>
+      </a>
+      <div class="nav__links">
+        <a href="#">Home</a>
+        <a href="#">Dashboard</a>
       </div>
-    </footer>
-  </body>
-</html>
+      <div>
+      <form class="form-inline my-2 my-lg-0", method='GET'>
+        {% csrf_token%}
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search", name ='query'>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+    </nav>
+  </header>
+  <main class="results__main">
+    <aside>
+      <h2>Filters</h2>
+      <div class="filter__group">
+        <h3 class="filter__type">Condition</h3>
+        {% for condition in conditions %}
+        <div class="filter">
+          <input type="radio" id="new" name="condition" />
+          <label for="new">{{condition.condition}}</label>
+          {%endfor%}
+      </div>
+
+      <div class="filter__group">
+        <h3 class="filter__type">Region</h3>
+
+        {% for region in regions %}
+        <div class="filter">
+          <input type="radio" id="greater_accra" name="region" />
+          <label for="greater_accra">{{region.region}}</label>
+        </div>
+    
+        {% endfor %}
+      </div>
+    </aside>
+    <section class="feed">
+
+  
+    
+  <br/>
+  <section class="price__category lowest__prices">
+    <h2>Lowest prices within one week</h2>
+    <div class="items__wrapper">
+      <a href="#" class="item">
+        <div class="item__image"></div>
+        <div class="item__details">
+          <p>Iphone 12</p>
+          <p>ghc 5,500</p>
+          <p>Achimota, Greater Accra</p>
+          <p>Jiji</p>
+          <p class="new">New</p>
+        </div>
+      </a>
+      <a href="#" class="item">
+        <div class="item__image"></div>
+        <div class="item__details">
+          <p>Iphone 12</p>
+          <p>ghc 5,500</p>
+          <p>Achimota, Greater Accra</p>
+          <p>Jiji</p>
+          <p class="new">New</p>
+        </div>
+      </a>
+    </div>
+  </section>
+    <div class="album py-5 bg-light">
+   <div class="container">
+          <div class="row">
+              {% for result in results %}
+              <a href='{{result.link}}' class="item">
+                <div class="item__image" >
+                  <img src="{{result.image}}" alt="{{result.name}}" width="100" height="100">
+                </div>
+                <div class="item__details">
+                  <p>{{result.name}}</p>
+                  <p>GHc {{result.price}}</p>
+                  <p>{{result.location}}, {{result.region.region}}</p>
+                  <p>{{result.vendor.vendor}}</p>
+                  <p class="new">{{result.condition.condition}}</p>
+                </div>
+              </a>
+              {% empty %}
+
+              <p>There are no results for your query.</p>
+              {% endfor %}
+          </div>
+      </div>
+  </div>
+ 
+{% endblock %}

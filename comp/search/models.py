@@ -38,5 +38,5 @@ class Phone(models.Model):
     date = models.DateField()
 
     def __str__(self):
-        return 'Name: ' + str(self.name) + ', Price: '+  str(self.Price) + ', Condition: ' + str(self.condition) + ', Location: ' + str(self.Location) + ', Region: ' + str(self.region) + ', Image: ' + str(self.image) + ', Link ' + str(self.link)+ ', Vendor ' + str(self.vendor)  + ', Time: ' + str(self.time)  + ', Date: ' + str(self.date)
+        return 'Name: ' + str(self.name) + ', Price: '+  str(self.price) + ', Condition: ' + str(self.condition) + ', Location: ' + str(self.location) + ', Region: ' + str(self.region) + ', Image: ' + str(self.image) + ', Link ' + str(self.link)+ ', Vendor ' + str(self.vendor)  + ', Time: ' + str(self.time)  + ', Date: ' + str(self.date)
 

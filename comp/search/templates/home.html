@@ -1,6 +1,6 @@
-{% extends "base.html" %}
+{% extends 'base.html'%}
 
-{% block content %}
+{%block content%}
 <header>
   <nav>
     <div class="logo">
@@ -12,9 +12,11 @@
 <main>
   <section class="form__section">
     <p>What are you looking to buy?</p>
-    <form>
-      <input type="text" />
-      <button>Search</button>
+    <form class="form-inline" method="GET" action = "{% url 'results-view'%}">
+      {% csrf_token %}
+      <input class="form-control mr-sm-2" type="text" name = 'query' placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
     </form>
   </section>
-  {% endblock %}
+</main>
+{%endblock%}

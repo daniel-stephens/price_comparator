@@ -1,9 +1,30 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.shortcuts import redirect, render
+from search.models import Phone, Region, Condition, Vendor
 
-class HomeView(TemplateView):
-    template_name = "home.html"
+def home(request):
+
+    
+    results = []
+    if request.GET.get('query'):
+        phones = request.GET['query']
+        results = Phone.objects.filter(name__icontains=phones)
+        return render(request, 'results.html', {'requests':results})
+    else:
+        return render(request, 'home.html')
+    
 
 
-class ResultsView(TemplateView):
-    template_name = 'results.html'
+def results_view(request):
+
+    vendors = Vendor.objects.all()
+    regions = Region.objects.all()
+    conditions = Condition.objects.all()
+    results = []
+
+    if request.GET.get('query'):
+
+        phones = request.GET['query']
+        results = Phone.objects.filter(name__icontains=phones)
+        
+    return render(request, 'results.html', {'results':results, 'regions':regions, 'conditions':conditions})
+
