@@ -30,23 +30,31 @@
       <h2>Filters</h2>
       <div class="filter__group">
         <h3 class="filter__type">Condition</h3>
+    
+          
         {% for condition in conditions %}
-        <div class="filter">
-          <input type="radio" id="new" name="condition" />
-          <label for="new">{{condition.condition}}</label>
+          <input type="radio" value ="{{condition.condition}}"  id="{{condition.condition}}" name="conditions" onchange="this.form.submit();"/>
+          <label for="{{condition.condition}}">{{condition.condition}}</label>
           {%endfor%}
+          
+       
       </div>
 
       <div class="filter__group">
         <h3 class="filter__type">Region</h3>
-
-        {% for region in regions %}
+      
+        
         <div class="filter">
-          <input type="radio" id="greater_accra" name="region" />
-          <label for="greater_accra">{{region.region}}</label>
+          {% for region in regions %}
+          <input type="radio" id="{{region.region}}" value="{{region.region}}" name="regions"  onchange="this.form.submit();"/>
+          <label for="{{region.region}}">{{region.region}}</label>
+          {% endfor %}
         </div>
-    
-        {% endfor %}
+  
+        
+        <div>
+        {{region.regions}}
+      </div>
       </div>
     </aside>
     <section class="feed">
@@ -94,13 +102,47 @@
                   <p>{{result.vendor.vendor}}</p>
                   <p class="new">{{result.condition.condition}}</p>
                 </div>
+              
               </a>
               {% empty %}
 
               <p>There are no results for your query.</p>
               {% endfor %}
+               <center>
+    {% csrf_token%}
+    <nav aria-label="Page navigation example"></nav>
+    <div class="paginator">
+      {% if results.has_previous %}
+          <a href = "?query={{phones}}&page=1">
+            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          </a>
+          <a href = "?query={{phones}}&page={{results.previous_page_number}}">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+          </a>
+      {% endif %}
+      {% for num in results.paginator.page_range %}
+          {% if results.number == num %}
+              <strong>{{ num }}</strong>
+          {%elif num > results.number|add:'-3' and num < results.number|add:'3'%}
+            {{num}}
+          {% endif %}
+      {%endfor%}
+      {% if results.has_next %}
+          <a href = "?query={{phones}}&page={{results.next_page_number}}">
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+          </a>
+          <a href = "?query={{phones}}%page={{results.paginator.num_pages}}">
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+          </a>
+      {% endif %}
+    </nav>
+    </div>
+</center>
           </div>
+          
       </div>
   </div>
+  
  
+
 {% endblock %}
