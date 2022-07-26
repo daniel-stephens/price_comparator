@@ -15,5 +15,12 @@ $ https://github.com/daniel-stephens/price_comparator.git
 
 $ cd price_comparator 
 ```
-Make sure you have postgresql installed and the PG4 server running and properly configured.
-Create a database caled
+Make sure you have postgresql installed and the pgAdmin4 server running and properly configured.
+
+Make migrations in django to create the database.
+
+Run jiji.py and tonaton.py to scrape data into the database.
+
+Make sure you have all the requirements installed 
+
+Run the django app
