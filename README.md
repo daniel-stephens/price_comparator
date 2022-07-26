@@ -5,3 +5,6 @@ The search for the lowest prices of items by comparison becomes very tedious bec
 This price comparator will search through the websites for the two most popular online shops in Ghana, Tonaton and Jiji for various times that would be searched.
 
 ## Running the app
+Clone the repository
+$ https://github.com/daniel-stephens/price_comparator.git
+$ cd price_comparator
